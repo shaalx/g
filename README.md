@@ -1,7 +1,7 @@
 #	g
 
-*	go build
-*	go test -v
-*	go run main.go
-*	git status
+*	g -b 	go build
+*	g -t 	go test -v
+*	g -r 	go run main.go
+*	g -s 	git status
 
