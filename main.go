@@ -16,11 +16,11 @@ var (
 )
 
 func init() {
-	flag.BoolVar(&gb, "b", false, "-b [true]")
-	flag.BoolVar(&gt, "t", false, "-t [true]")
-	flag.StringVar(&gr, "r", "main.go", "-r main.go")
+	flag.BoolVar(&gb, "b", false, "-b [true] : go build")
+	flag.BoolVar(&gt, "t", false, "-t [true] : go test -v")
+	flag.StringVar(&gr, "r", "main.go", "-r main.go : go run file.go")
 
-	flag.BoolVar(&gs, "s", false, "-s [true]")
+	flag.BoolVar(&gs, "s", false, "-s [true] : git status")
 }
 
 func main() {
