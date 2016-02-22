@@ -11,12 +11,13 @@ var (
 	gb = false
 	gt = false
 	gr = ""
-
+	gi = false
 	gs = false
 )
 
 func init() {
 	flag.BoolVar(&gb, "b", false, "-b [true] : go build")
+	flag.BoolVar(&gi, "i", false, "-i [true] : go install")
 	flag.BoolVar(&gt, "t", false, "-t [true] : go test -v")
 	flag.StringVar(&gr, "r", "main.go", "-r main.go : go run file.go")
 
@@ -32,6 +33,10 @@ func main() {
 	}
 	if gb {
 		cmd.Reset("go build").Execute()
+		return
+	}
+	if gi {
+		cmd.Reset("go install").Execute()
 		return
 	}
 	if gt {
