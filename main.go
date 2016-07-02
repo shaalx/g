@@ -22,7 +22,7 @@ func init() {
 	flag.BoolVar(&gi, "i", false, "-i [true] : go install")
 	flag.BoolVar(&gt, "t", false, "-t [true] : go test -v")
 	flag.StringVar(&gr, "r", "main.go", "-r main.go : go run file.go")
-	flag.StringVar(&gm, "m", "commit", "-m commit : git add -A;git commit -m --")
+	flag.StringVar(&gm, "m", "", "-m commit : git add -A;git commit -m --")
 
 	flag.BoolVar(&gs, "s", false, "-s [true] : git status")
 }
@@ -55,5 +55,4 @@ func main() {
 		return
 	}
 	cmd.Reset(fmt.Sprintf("go run %s", gr)).Execute()
-	return
 }
