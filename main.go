@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	"github.com/everfore/exc"
-	// "github.com/shaalx/goutils"
+	// "github.com/toukii/goutils"
 )
 
 var (
