@@ -43,7 +43,14 @@ func main() {
 		return
 	}
 	if gt {
-		cmd.Reset("go test -v").Execute()
+		var testFunc string
+		fmt.Print("test func:")
+		fmt.Scanf("%s", &testFunc)
+		testCMD := "go test -v"
+		if testFunc != "" {
+			testCMD += fmt.Sprintf(" -test.run %s", testFunc)
+		}
+		cmd.Reset(testCMD).Execute()
 		return
 	}
 	if len(gm) > 0 {
