@@ -9,18 +9,22 @@ import (
 )
 
 var (
-	gb = false
-	gt = false
-	gr = ""
-	gi = false
-	gs = false
-	gm = ""
+	gb  = false
+	gt  = false
+	gtb = false
+	gT  = false
+	gr  = ""
+	gi  = false
+	gs  = false
+	gm  = ""
 )
 
 func init() {
 	flag.BoolVar(&gb, "b", false, "-b [true] : go build")
 	flag.BoolVar(&gi, "i", false, "-i [true] : go install")
-	flag.BoolVar(&gt, "t", false, "-t [true] : go test -v")
+	flag.BoolVar(&gt, "t", false, "-t [true] : go test -v -test.run")
+	flag.BoolVar(&gT, "T", false, "-T [true] : go test -v")
+	flag.BoolVar(&gtb, "tb", false, "-tb [true] : go test -v -bench")
 	flag.StringVar(&gr, "r", "main.go", "-r main.go : go run file.go")
 	flag.StringVar(&gm, "m", "", "-m commit : git add -A;git commit -m --")
 
@@ -40,6 +44,22 @@ func main() {
 	}
 	if gi {
 		cmd.Reset("go install").Execute()
+		return
+	}
+	if gT {
+		testCMD := "go test -v"
+		cmd.Reset(testCMD).Execute()
+		return
+	}
+	if gtb {
+		var benchFunc string
+		fmt.Print("bench func:")
+		fmt.Scanf("%s", &benchFunc)
+		testCMD := "go test"
+		if benchFunc != "" {
+			testCMD += fmt.Sprintf(" -bench %s", benchFunc)
+		}
+		cmd.Reset(testCMD).Execute()
 		return
 	}
 	if gt {
