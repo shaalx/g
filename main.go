@@ -57,7 +57,7 @@ func main() {
 		cmd.Reset(testCMD).Execute()
 		return
 	}
-	if gtb != "" {
+	if gtb != "." {
 		testCMD := fmt.Sprintf("go test -bench=%s", gtb)
 		cmd.Reset(testCMD).Execute()
 		return
